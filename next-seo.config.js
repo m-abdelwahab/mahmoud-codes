@@ -14,7 +14,7 @@ const SEO = {
     description,
     images: [
       {
-        url: "https://mahmoudabdelwahab.com/images/banner.jpg",
+        url: "https://mahmoudabdelwahab.com/images/banner.png",
         alt: title,
         width: 1280,
         height: 720,
