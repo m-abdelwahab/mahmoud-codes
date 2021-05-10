@@ -1,0 +1,260 @@
+---
+title: Introduction to End-to-end Type Safety
+date: "Nov 12th 2020"
+categories: ["GraphQL", "TypeScript"]
+description: "Introduction to End-to-end Type Safety and the benefits it offers"
+published: true
+showTOC: true
+pinned: true
+cover:
+  src: "/images/blog/blue-ocean-strategy/cover.jpg"
+  alt: "Intro to end-to-end type-safety"
+---
+
+In this article, you're going to learn what end-to-end type-safety means and why it's beneficial.
+
+The only prerequisites needed are:
+
+1. Have some basic JavaScript knowledge.
+2. Understand how full-stack Web Apps work.
+
+## Type-Safe JavaScript
+
+You're working inside a JavaScript codebase, and you find the following code block:
+
+```js
+const constructFullName = (firstName, lastName) => {
+  return `${firstName} ${lastName}`;
+};
+
+constructFullName("Mahmoud", "Abdelwahab"); // "Mahmoud Abdelwahab"
+```
+
+This is a function that takes two parameters, a first name, last name, and returns the full name as a string. Seems pretty harmless right? Well, what happens when you call this function and pass it only one argument? The other one will be undefined.
+
+```js
+const constructFullName = (firstName, lastName) => `${firstName} ${lastName}`;
+
+constructFullName("Mahmoud"); // "Mahmoud undefined"
+```
+
+A quick fix is to set a default value for the parameters to avoid this behavior, this way if we don't pass any parameters we won't get undefined.
+
+```js
+const constructFullName = (firstName = "", lastName = "") =>
+  `${firstName} ${lastName}`;
+
+constructFullName("Mahmoud"); // "Mahmoud"
+```
+
+But what if we want all parameters to be required, to construct a full name, we need _both_ the first name and the last name. We want the developer that will call the function to always pass the two arguments.
+Here's one way to do it:
+
+```js
+const isRequired = () => {
+  throw new Error(`param is required`);
+};
+
+const constructFullName = (
+  firstName = isRequired(),
+  lastName = isRequired()
+) => {
+  return `${firstName} ${lastName}`;
+};
+constructFullName("Mahmoud"); // Error: param is required
+```
+
+We're setting a function as the default value for the parameters, if we don't override this function by passing an argument, we will get an error.
+
+This works but what if we want to strictly pass strings to the function? We can do this:
+
+```js
+const isRequired = () => {
+  throw new Error(`param is required!`);
+};
+
+const constructFullName = (
+  firstName = isRequired(),
+  lastName = isRequired()
+) => {
+  if (typeof firstName !== "string" || typeof lastName !== "string") {
+    throw new Error(`you must pass a string to this function!`);
+  }
+  return `${firstName} ${lastName}`;
+};
+constructFullName("Mahmoud", "Abdelwahab"); // Mahmoud Abdelwahab
+constructFullName("Mahmoud", someVariable); // Error: you must pass a string to this function
+```
+
+Notice how much work is done for _one_ function, just to prevent us from making these mistakes and leading to unpredictable behavior. This is of course not ideal since this process is slow and tiring.
+
+JavaScript is a weakly typed language, it doesn't enforce types. A variable can be assigned a string but later can be assigned a number. JavaScript won't complain.
+
+```js
+let age = "Twenty One Years Old";
+
+let age = 21; // no problem
+```
+
+This behavior makes type mismatches the most common type of error: a certain type of value is expected ( String, Number, Boolean, etc. ), but another is received. This can happen due to a misunderstanding of the API, typos, or by making a mistake.
+
+Finally, an important thing to note is that the errors we're throwing in the code above will be thrown during _runtime_, they'll only appear _after_ we run our app. This means without proper testing we may ship code that can break our app.
+
+All of this affects developer productivity but also it makes developers less confident with the code they're shipping. Fortunately, it doesn't have to be this way. TypeScript to the rescue!
+
+### What is TypeScript?
+
+TypeScript is a superset of JavaScript, developed by Microsoft and got released to the public in 2012.
+
+It's scalable, type-safe JavaScript that catches type errors during compile time.
+
+We assign types using the following syntax:
+
+```ts
+// age has a type of number
+
+// TypeScript also infers types, however adding types makes the code readable and more predictable.
+
+let age: number = 21;
+```
+
+Here's an example where we try to assign the variable `age` a string, which is the wrong type.
+
+TypeScript prevents us from doing this and throws an error. We wouldn't be able to compile this code.
+
+![Type Safe JS](https://user-images.githubusercontent.com/27310414/98813184-7715a400-242c-11eb-945a-be30c26f9455.gif)
+
+Let's go back to the `constructFullName` function we defined above using JavaScript, this time without checking the type of parameters or making sure that we passed them. Here are different inputs to the function and their outputs:
+
+```js
+const constructFullName = (firstName, lastName) => {
+  return `${firstName}, ${lastName}`;
+};
+constructFullName("Mahmoud", "Abdelwahab"); // Mahmoud Abdelwahab
+constructFullName("Mahmoud", 21); // Mahmoud 21
+constructFullName("Mahmoud"); // Mahmoud undefined
+constructFullName(); // undefined undefined
+```
+
+With TypeScript, all we need to do is define the **argument(s) type(s)** and the **return type** of the function.
+
+In our case we want the `constructFullName` function to take 2 strings as a parameter and to return a string. Here's the same function but written in TypeScript:
+
+```ts
+const constructFullName = (firstName: string, lastName: string): string => {
+  return `${firstName}, ${lastName}`;
+};
+```
+
+If we try the past examples we automatically get an error, _before_ running our code. TypeScript detects errors _as we type_ our code.
+
+![TypeScript type checking example](https://user-images.githubusercontent.com/27310414/98815425-c6a99f00-242f-11eb-8f44-e583bc6a75b3.gif)
+
+Notice how TypeScript auto-completes the function name, displays the function's arguments with their types and the return type of the function.
+
+Also, if we don't provide **all** the arguments with their **correct types** we automatically get an error.
+
+### Why Type-Safety is Beneficial To Developers
+
+When using a type-safe language like TypeScript you get a ton of benefits:
+
+- Code is self-documenting: No need to add lots of comments, you can understand what a function does from its types
+- Code is predictable
+- Less unit tests to write
+- Awesome Developer Experience in VSCode
+  - Refactoring is easier
+  - Auto-import: VSCode automatically adds any missing imports (No more errors due to forgetting to import a file/library)
+  - Auto-complete
+
+In conclusion, you feel more confident in the code you write and ship.
+
+> But isn't this more work?
+
+When a codebase grows and becomes more complex, you want to be able to make changes and add more code with confidence. With TypeScript you start slow but your productivity in the long run drastically increases, with JavaScript it's the opposite. Think of it as an investment that will pay off in the future.
+
+![TS vs. JS](https://user-images.githubusercontent.com/27310414/98849786-6bda6c80-245c-11eb-9259-88b0ca746fe3.gif)
+
+## Type-safety In The Context of Full-stack Web Apps
+
+We've already discussed how Type-safety is beneficial to developer productivity and project scalability. It's even more important in the context of full-stack Web Apps.
+
+To fully understand "end-to-end" type-safety we need to go over how a web app works.
+
+This is a "traditional" monolithic web app architecture, you have several components interacting with each other through a request/response cycle. While there are other types of architectures this is the most common one and it's the one we'll be focusing on in this article.
+
+![Web App Architecture](https://user-images.githubusercontent.com/27310414/98822179-2ce6ef80-2439-11eb-9325-21badeb12616.png)
+
+- Front-end: What the user sees and interacts with. It can be a Web App, a Mobile App, a Desktop App, etc. In the context of Web Apps, you write it using HTML, CSS and JavaScript. Most likely you'll use a front-end framework like (React, Vue, Angular, etc.).
+- API: how the front-end interacts with the server. The most popular types of APIs are REST and GraphQL APIs.
+- Server: Contains the core business logic of the app. It can be written in any language like JavaScript, Python, Java, Go, Rust, etc.
+- How the server interacts with the database. Usually through on ORM/ query builders/ raw Database queries. Here's a [comparison](https://www.prisma.io/dataguide/types/relational/comparing-sql-query-builders-and-orms) between each way.
+- Database: where data is persisted and stored. Can be relational, document-based, key-value pairs, etc.
+
+Now as you can see, we have a lot of options when it comes to each component in the stack each option offering some advantages and drawbacks. We'll be taking a look at different stacks and comparing them:
+
+### Full-stack Apps and REST APIs
+
+If you're working with REST APIs and full-stack JavaScript you're not getting any type-safety, this will lead to unpredictable code, unnecessary bugs, and slowdown the development process.
+
+> Will using TypeScript help?
+
+Writing the front-end and the backend in TypeScript doesn't make an app type-safe, this is because the API that's connecting them is not typed. The system is as strong as its weakest point, in this case, it's the API.
+
+Developers working on the front-end will have to _assume_ the type of the returned data when interacting with the API. Since there's room for assumption, type mismatches can occur often and thus slowing down the development process.
+
+We also have **multiple sources of truth** for our types and they can easily get out of sync.
+
+Here's a visual summary:
+
+![Full stack TS + REST](https://user-images.githubusercontent.com/27310414/98855089-2326b180-2464-11eb-910d-285ef71dd626.png)
+
+Furthermore, when using a REST API, you encounter the following problems:
+
+1. Maintaining documentation for the API: You need to define all of the endpoints, their parameters, and the values they return (including errors). For example, check out [GitHub's REST API documentation](https://developer.github.com/v3/)
+2. Overfetching: the endpoint returns more data than you need.
+3. Under-fetching: the data you need is spread across multiple endpoints and you have to manually stitch them together.
+4. The returned data is _not_ typed, which affects developer productivity and the code quality (How well it scales and how predictable it is).
+
+Fortunately, there is a better alternative: **GraphQL**.
+
+### GraphQL: The New REST
+
+If you're not familiar with GraphQL it's a new way to build APIs. Instead of defining multiple endpoints you define a single endpoint and interact with it. It also solves the issues that REST APIs have:
+
+1. You only **ask for the data that you need** so no more under-fetching or over-fetching
+2. **Documentation is automatically generated**, so no need to document any changes.
+3. It's a spec: all GraphQL APIs work the same, so there's **no learning curve**. (REST APIs can be built in different ways)
+
+What's great about GraphQL is that it has a built-in [type system](https://graphql.org/learn/schema/). So we're one step closer to creating an end-to-end type-safe system.
+
+![REST vs GraphQL](https://user-images.githubusercontent.com/27310414/98841282-8e668880-2450-11eb-8e3f-01df06dbb4b8.png)
+_GraphQL vs. REST_
+
+### Leveraging GraphQL Tooling To Build An End-to-end Type-safe System
+
+To achieve end-to-end type-safety status, types must be consistent and in **sync** across the whole stack.
+The goal is to maintain a **single source of truth** for our types. Doing this is a lot of manual work, which leaves room for error. So the best solution is to _automate_ this task.
+
+There are multiple stacks that can achieve end-to-end type-safety, I'll be showing you one way to do it.
+
+1. We use an ORM to get the types of our database ([Prisma](https://prisma.io))
+2. Use a code-first approach to define our schema and resolvers using [Nexus](https://https://nexusjs.org/). A Schema-first approach can also work, however, it leaves room for error. Here's a [comparison between code-first and schema-first development](https://www.prisma.io/blog/the-problems-of-schema-first-graphql-development-x1mn4cb0tyl3)
+3. Generate types from the schema to use on the front-end using [GraphQL code generator](https://graphql-code-generator.com/)
+
+This is a **unidirectional flow** that starts from the backend and our types propagate to the frontend. It also maintains a single source of truth (the GraphQL schema) and allows us to have a clear 3 step process in case we want to do any migrations/updates.
+
+1. Update the database schema and types.
+2. Update the types and fields in the schema generation step.
+3. Update the fields on the front-end.
+
+![Full Stack TypeScript + GraphQL API](https://user-images.githubusercontent.com/27310414/98915084-1b9df180-24d2-11eb-9199-027a9312cbe5.png)
+
+If you're interested in a practical code example, [Prisma](https://prisma.io) has an end-to-end type-safe [example](https://github.com/prisma/prisma-examples/tree/latest/typescript/graphql-nextjs) which uses the following stack:
+
+- Next.js ( Full Stack Framework) + TypeScript.
+- Apollo GraphQL (GraphQL Client + GraphQL server).
+- Prisma (database toolkit to interact with the Database).
+- SQLite (can easily be replaced with PostgreSQL).
+- Nexus (code-first GraphQL Schema + generates types).
+
+They also have a [guide](https://dev.to/prisma/complete-introduction-to-fullstack-type-safe-graphql-feat-next-js-nexus-prisma-c5) which shows how to build this Fullstack, Type-Safe GraphQL example.

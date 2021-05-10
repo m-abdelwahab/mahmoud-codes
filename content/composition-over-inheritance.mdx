@@ -1,0 +1,112 @@
+---
+title: Composition Over Inheritance
+date: "May 12th 2019"
+categories: ["Programming"]
+description: "A comparison between Object-oriented programming and Functional programming"
+published: true
+showTOC: false
+pinned: true
+cover:
+  src: "/images/bookshelf/blue-ocean-strategy/cover.jpg"
+  alt: "Blue Ocean Strategy"
+---
+
+_Object-Oriented Programming (OOP)_ is one of the most popular paradigms when it comes to building software, however, the more I learned about JavaScript, I got introduced to _Functional Programming (FP)_, a completely different way of thinking. In this article, I'll share with you what I've learned and I'll explain to you using my own examples.
+
+Example: You want to build a game, where the main character is a student in Hogwarts and he's learning witchcraft from his teacher.
+So you create a _Student_ Class where your student object will be able to take tests, and you have another class called _Teacher_, where the teacher object will be able to grade Tests.
+
+```js
+Student.takeTest();
+
+Teacher.gradeTest();
+```
+
+Assuming you want to add some features like eating, sleeping and walking, you'll end up with something that looks like this
+
+```js
+Student.takeTest().sleep().eat().walk();
+
+Teacher.gradeTest().sleep().eat().walk();
+```
+
+The problem is that the code above doesn't follow the DRY principle, which stands for ( Don't Repeat Yourself), so the solution is to create a _parent_ class where we put the sleep, eat and walk features. So we end up with something like this:
+
+```js
+Human.sleep().eat().walk();
+
+Student.takeTest();
+
+Teacher.takeTest();
+```
+
+Yaaay problem solved! everyone's happy. However, a few months later, to make your game even more exciting, you decide to add another character to your game, let's say you want to add a dragon. This is what you end up with:
+SO you end up with something like this:
+
+```js
+EvilDragon.breathFire().fly();
+Human.sleep().eat().walk();
+
+Student.takeTest();
+
+Teacher.takeTest();
+```
+
+While this is great, you're not satisfied, so you decide to make the game more realistic by giving your dragon abilities like humans, you want your dragon to be able to sleep and eat, so you end up with something like this:
+
+```js
+GameObject.sleep().eat();
+
+EvilDragon.breathFire().fly();
+
+Human.walk();
+
+Student.takeTest();
+
+Teacher.takeTest();
+```
+
+Now, this is working completely fine, but assuming that in your game, the teacher, after careful study of witchcraft, was able to create a cape that allowed him to fly.
+Now comes the problem: _how_ do you structure your project? you can't add the flying ability to the humans class because not all humans can fly, and you can't make the teacher inherit from the EvilDragon Class, because the teacher can't breathe fire.
+There is a solution it's to add features that will never be used by the teacher object to make him able to fly, like breathing fire. However, this is like asking for a banana and receiving a gorilla holding a banana.
+So now, you've hit a wall, you can't turn your game idea into a reality.
+Of course, you can repeat yourself, but since you're an excellent developer who cares about every line of code he writes you won't do that.
+Don't worry though, there is a solution: **Composition**
+
+With inheritance, you structure your classes around **<Highlight type="underline" content="what they are."  color="var(--color-text-accent)"/>** With functional programming, you structure your classes on **<Highlight type="underline" color="var(--color-text-accent)" content="what they do" delay={4000}/>**.
+
+By favoring composition over inheritance and thinking in terms of what things _do_ rather than what things _are_, you free yourself of fragile and tightly coupled inheritance structures.
+
+Here's a snippet of what our code might look like in our game when we think in terms of objects:
+
+```js
+class Teacher {
+  constructor(name) {
+    this.name = name;
+  }
+  sleep() {
+    setTimeout(console.log("Damn, that was a great nap"), 8000);
+  }
+}
+
+const teacher = new Teacher(Dumbledore);
+teacher.sleep();
+//outputs 'Damn, that was a great nap' after 8 seconds
+```
+
+When we write our project using a functional approach we end up with a collection of stand-alone functions, each one of them serving a single purpose, which facilitates maintainability and makes debugging easier since we can predict the outcome of a function. When creating an object, we simply import all the functions that we need.
+
+```js
+//same code rewritten using factory functions
+//factory functions are functions that create objects
+//we will use
+const sleep = () => {
+  return setTimeout(console.log("Damn, that was a great nap"), 8000);
+};
+Object.assign();
+```
+
+Which one wins? well normally you would use inheritance when there is a _relation_ between objects, like me, Mahmoud, I'm a human, so I will inherit all of the things that a human has. On the other hand, you would use composition for example when an object _has_ a certain feature, like for example a car will have an engine component.
+
+However, this is not completely true because, for example, a car is a vehicle and me Mahmoud, I have arms and I can lift things. So, in reality, you can follow any of these patterns.
+Buuuut, composition is easier to debug, maintain, everything is encapsulated and in a project, you can easily add features.

@@ -1,0 +1,301 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+
+@layer base {
+  @font-face {
+    font-family: Wotfard;
+    src: url(../public/fonts/Wotfard-Regular.woff) format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: Wotfard;
+    src: url(../public/fonts/Wotfard-RegularItalic.woff) format("woff");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: Wotfard;
+    src: url(../public/fonts/Wotfard-Medium.woff) format("woff");
+    font-weight: 500;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: Wotfard;
+    src: url(../public/fonts/Wotfard-SemiBold.woff) format("woff");
+    font-weight: 600;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: Wotfard;
+    src: url(../public/fonts/Wotfard-Bold.woff) format("woff");
+    font-weight: 700;
+    font-display: swap;
+  }
+}
+.code:hover .copyToClipboard {
+  opacity: 1;
+}
+
+.wave {
+  animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.5s; /* Change to speed up or slow down */
+  animation-iteration-count: 1; /* Never stop waving :) */
+  transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+  display: inline-block;
+  animation-delay: 1000ms;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  } /* The following five values can be played with to make the waving more or less extreme */
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  } /* Reset for the last half to pause */
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.light {
+  --color-bg-accent: rgb(102, 170, 204, 0.3);
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #edf2f7;
+  --color-bg-accent-hover: rgb(102, 170, 204, 0.8);
+
+  --color-text-accent: #2b6cb0;
+  --color-text-primary: #2d3748;
+  --color-text-secondary: #4a5568;
+  --color-text-tertiary: #4a5568;
+  --color-text-on-accent: #f7fafc;
+  --color-text-error: #cc0000;
+
+  --color-fill-primary: #b1d9f6;
+  --color-fill-secondary: #edf2f7;
+
+  --color-gradient-accent1: rgba(49, 130, 206, 1);
+  --color-gradient-accent2: rgba(79, 209, 197, 1);
+
+  --color-info-background: #dfebf6;
+  --color-info-border: #43f;
+
+  --color-danger-background: #fff5f5;
+  --color-danger-border: #cc0000;
+
+  --color-warning-background: #ffdd0040;
+  --color-warning-border: #ff9d00;
+
+  --color-check-background: #00cc881a;
+  --color-check-border: #0c8;
+  --color-bg-card: transparent;
+}
+.btn {
+  text-decoration: none;
+  color: #002f3c;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  position: relative;
+  padding: 0.5rem 3rem;
+  background-color: var(--color-bg-primary);
+  border-radius: 0.375rem;
+  border-width: 2px;
+  box-shadow: 3px 3px 0 var(--color-bg-accent);
+  text-align: center;
+}
+.btn:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
+  box-shadow: 3px 3px 0 var(--color-bg-accent-hover);
+}
+
+.dark {
+  --color-bg-card: #1e262f;
+  --color-bg-accent: rgb(102, 170, 204, 0.3);
+  --color-bg-primary: #000;
+  --color-bg-secondary: #161b25;
+  --color-bg-accent-hover: rgb(102, 170, 204, 0.8);
+
+  --color-text-accent: #81e6d9;
+  --color-text-primary: #f7fafc;
+  --color-text-secondary: #e2e8f0;
+  --color-text-tertiary: #a0aec0;
+  --color-text-on-accent: #1a202c;
+  --color-text-on-accent: #1a202c;
+  --color-text-error: #cc0000;
+
+  --color-fill-primary: #81e6d9;
+  --color-fill-secondary: #161b25;
+
+  --color-gradient-accent1: rgba(49, 130, 206, 1);
+  --color-gradient-accent2: rgba(79, 209, 197, 1);
+
+  --color-info-background: #182635;
+  --color-info-border: #4a67f7;
+
+  --color-danger-background: #fed7d7;
+  --color-danger-border: #cc0000;
+
+  --color-warning-background: #ffa2001a;
+  --color-warning-border: #ff7f00;
+
+  --color-check-background: #00cc881a;
+  --color-check-border: #0c8;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  min-height: 100%;
+  scroll-margin-top: 2rem;
+}
+
+@media (prefers-reduced-motion) {
+  html {
+    scroll-behavior: auto;
+    scroll-margin-top: 2rem;
+  }
+}
+
+.gatsby-highlight {
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+.gatsby-highlight pre[class*="language-"] {
+  -webkit-overflow-scrolling: touch;
+}
+.gatsby-highlight pre[class*="language-"]::before {
+  background: black;
+  border-radius: 0 0 0.25rem 0.25rem;
+  color: white;
+  font-size: 12px;
+  letter-spacing: 0.025rem;
+  padding: 0.1rem 0.5rem;
+  position: absolute;
+  right: 1rem;
+  text-align: right;
+  text-transform: uppercase;
+  top: 0;
+}
+.gatsby-highlight pre[class~="language-javascript"]::before {
+  content: "JS";
+  background: #f7df1e;
+  color: black;
+}
+.gatsby-highlight pre[class~="language-ts"]::before {
+  content: "TS";
+  background: #007acc;
+  color: #ffffff;
+}
+
+.gatsby-highlight pre[class~="language-js"]::before {
+  content: "JS";
+  background: #f7df1e;
+  color: black;
+}
+
+.gatsby-highlight pre[class~="language-html"]::before {
+  content: "HTML";
+  background: #e44d26;
+  color: white;
+}
+
+.gatsby-highlight pre[class~="language-JSX"]::before {
+  content: "CSS";
+  background: #696969;
+  color: white;
+}
+.gatsby-highlight pre[class~="language-css"]::before {
+  content: "css";
+  background: #264de4;
+  color: white;
+}
+
+.gatsby-highlight pre[class~="language-bash"]::before {
+  content: "bash";
+  background: #696969;
+  color: white;
+}
+
+.highlight-line {
+  background-color: rgb(2, 55, 81);
+  border-left: 4px solid rgb(2, 155, 206);
+  width: 100%;
+}
+
+.highlight-line .line-number-style {
+  opacity: 0.5;
+  left: -2px;
+}
+
+.line-number-style {
+  width: calc(1.2em - 4px);
+  display: inline-block;
+  padding-left: 1em;
+  padding-right: 1.2em;
+  margin-right: 20px;
+  width: 1.2em;
+  user-select: none;
+  opacity: 0.3;
+  text-align: center;
+  position: relative;
+}
+
+.info {
+  border-left: 5px solid var(--color-info-border);
+  background-color: var(--color-info-background);
+}
+
+.danger {
+  border-left: 5px solid var(--color-danger-border);
+  background-color: var(--color-danger-background);
+}
+
+.warning {
+  border-left: 5px solid var(--color-warning-border);
+  background-color: var(--color-warning-background);
+}
+
+.check {
+  border-left: 5px solid var(--color-check-border);
+  background-color: var(--color-check-background);
+}
+
+.prose a {
+  text-decoration: none;
+  background-image: linear-gradient(120deg, #ec008c, #fc6767 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 0 110%;
+  transition: background-size 0.1s ease-in;
+  font-weight: 500;
+}
+.prose a:hover {
+  opacity: 0.9;
+}
+
+.handwritten {
+  font-family: "Nanum Pen Script", cursive;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

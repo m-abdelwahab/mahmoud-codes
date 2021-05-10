@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Full Stack Serverless with Prisma & Next.js",
+    "description": "Learn how to build a serverless contact management app with Next.js, Prisma, Typescript, Tailwind, and NextAuth.js.",
+    "topic": "Prisma",
+    "link": "https://www.youtube.com/watch?v=5UZBhWAlyTo&t=128s&ab_channel=ColbyFayock",
+    "event": "Twitch Livestream - Feb 2021"
+  },
+  {
+    "title": "Securing React Apps Using Auth0",
+    "description": "An introduction to the different authentication strategies and showing how to add authentication to a React app using Auth0",
+    "topic": "React + Auth0",
+    "link": "https://egghead.io/lessons/egghead-authenticating-react-apps-using-auth0",
+    "event": "Egghead Talks - Oct 2020"
+  },
+  {
+    "title": "Beginner Pitfalls: My Personal Journey",
+    "description": "A talk on the mistakes I made when learning how to code",
+    "topic": "Personal Experience",
+    "link": "https://www.bytesized.xyz/react-2020",
+    "event": "ByteConf React - May 2020"
+  },
+  {
+    "title": "Why Gatsby Is Awesome",
+    "description": "A talk on what is Gatsby and how it creates incredibly fast websites",
+    "topic": "Web Performance",
+    "link": "https://www.meetup.com/EgyptJS/events/269752047/",
+    "event": "EgyptJS - Apr 2020"
+  },
+  {
+    "title": "Hooked: How To Build Habit Forming Products",
+    "description": "A lightning-talk about patterns used by apps that hook and engage us",
+    "topic": "Book Review",
+    "link": "https://www.meetup.com/EgyptJS/events/260794616/",
+    "event": "EgyptJS - Aug 2019"
+  }
+]
