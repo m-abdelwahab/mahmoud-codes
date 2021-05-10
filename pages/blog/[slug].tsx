@@ -28,6 +28,11 @@ export default function PostPage({ source, frontMatter, readingTime }) {
   return (
     <>
       <NextSeo
+        twitter={{
+          handle: "@thisismahmoud_",
+          site: "@thisismahmoud_",
+          cardType: "summary_large_image",
+        }}
         openGraph={{
           type: "website",
           url: `https://mahmoudabdelwahab.com/${slug}`,
