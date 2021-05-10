@@ -35,10 +35,10 @@ export default function PostPage({ source, frontMatter, readingTime }) {
           description: `${frontMatter.description}`,
           images: [
             {
-              url: `https://mahmoudabdelwahab.com/images/${frontMatter.cover.src}`,
+              url: `https://mahmoudabdelwahab.com/images/blog/${slug}/cover.png`,
               width: 800,
               height: 600,
-              alt: `https://mahmoudabdelwahab.com/images/${frontMatter.cover.alt}`,
+              alt: `${frontMatter.cover.alt}`,
             },
           ],
         }}
