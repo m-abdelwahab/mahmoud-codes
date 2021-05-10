@@ -1,6 +1,6 @@
-const title = "Mahmoud Abdelwahab - Developer, writer, and maker";
+const title = "Mahmoud Abdelwahab - Developer Advocate";
 const description =
-  "Developer, writer, and maker. Obsessed with & creating exceptional, high-quality, content and applications.";
+  "Developer, writer, and maker. Obsessed with creating exceptional, high-quality, content and applications.";
 
 const SEO = {
   title,
