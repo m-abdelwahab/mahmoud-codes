@@ -30,6 +30,9 @@ module.exports = {
           p: {
             color: "var(--color-text-primary)",
           },
+          li: {
+            color: "var(--color-text-primary)",
+          },
           blockquote: {
             border: "none",
             textAlign: "center",
