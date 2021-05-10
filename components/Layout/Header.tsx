@@ -31,9 +31,13 @@ export const Header = () => {
               </Link>
             </li>
             <li>
-              <Link href="/youtube">
-                <a>YouTube</a>
-              </Link>
+              <a
+                href="https://m.youtube.com/c/MahmoudAbdelwahab"
+                rel="noopener"
+                target="_blank"
+              >
+                YouTube
+              </a>
             </li>
             <li>
               <Link href="/about">
