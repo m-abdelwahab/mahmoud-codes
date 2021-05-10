@@ -1,5 +1,3 @@
-const colors = require("tailwindcss/colors");
-
 module.exports = {
   mode: "jit",
   purge: ["./pages/**/*.tsx", "./components/**/*.tsx"],
@@ -52,6 +50,20 @@ module.exports = {
           },
           strong: {
             color: "var(--color-text-primary)",
+          },
+          code: {
+            backgroundColor: "var(--color-text-primary)",
+            color: "var(--color-bg-primary)",
+            fontWeight: "400",
+            "border-radius": "0.25rem",
+          },
+          "code::before": {
+            content: '""',
+            "padding-left": "0.25rem",
+          },
+          "code::after": {
+            content: '""',
+            "padding-right": "0.25rem",
           },
         },
       },
