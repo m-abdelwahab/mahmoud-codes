@@ -2,7 +2,7 @@ import React from "react";
 
 const Uses = () => {
   return (
-    <div className="container mx-auto pt-16">
+    <div className="px-10 md:px-24 container mx-auto pt-16">
       <h1 className="mb-3 text-center text-6xl font-semibold tracking-wide">
         Uses{" "}
         <span role="img" aria-label="coding emoji">

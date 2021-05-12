@@ -6,7 +6,7 @@ const Talks = () => {
     <>
       <div className="bg-primary text-primary ">
         <div className="container mx-auto px-10 lg:px-32 pb-32 pt-16">
-          <h1 className="mb-3 text-center text-6xl font-semibold tracking-wide">
+          <h1 className="mb-3 text-center text-5xl md:text-6xl font-semibold tracking-wide">
             Talks & Appearances
           </h1>
           <p className="mb-16 text-center text-xl font-normal">

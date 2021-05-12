@@ -4,7 +4,7 @@ import Link from "next/link";
 const About = () => {
   return (
     <div className="bg-primary text-primary min-h-full h-full pt-16">
-      <div className="py-10 mx-auto container px-10 md:px-24 ">
+      <div className="mx-auto container px-10 md:px-24 ">
         <div>
           <div>
             <div className="prose prose-lg container mx-auto">

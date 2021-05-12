@@ -61,7 +61,10 @@ export const MobileNav = () => {
     },
   };
   return (
-    <header className="sm:hidden pt-24 px-12 text-xl" aria-hidden={!navShow}>
+    <header
+      className="relative bg-primary sm:hidden pt-24 px-12 text-xl"
+      aria-hidden={!navShow}
+    >
       <div className="absolute left-0 top-0 ml-10 mt-12">
         <Link href="/">
           <a>
@@ -101,7 +104,7 @@ export const MobileNav = () => {
           variants={sidebar}
           transition={{ duration: 0.2 }}
           aria-label="Menu Button"
-          className="-ml-8 -mt-24 w-full h-screen bg-primary fixed cursor-auto"
+          className="-ml-8 -mt-44 w-full h-screen bg-primary fixed cursor-auto"
           onClick={() => {
             // @ts-ignore
             setNavShow(!navShow);
