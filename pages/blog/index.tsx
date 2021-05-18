@@ -72,45 +72,47 @@ export default function Index({ posts }) {
             <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
               {posts.length === 0
                 ? "No results"
-                : posts.map((post, i) => (
-                    <li key={i}>
-                      <Link
-                        as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`}
-                        href={`/blog/[slug]`}
-                      >
-                        <a>
-                          <motion.div
-                            key={post.filePath}
-                            // @ts-ignore
-                            whileHover={{ scale: 1.05, transition: 300 }}
-                            className="bg-card shadow-md rounded p-5 flex flex-col"
-                          >
-                            <h1 className=" hover:text-accent text-2xl font-medium mb-3">
-                              {post.data.title}
-                            </h1>
+                : posts
+                    .filter((post) => post.data.published === true)
+                    .map((post, i) => (
+                      <li key={i}>
+                        <Link
+                          as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`}
+                          href={`/blog/[slug]`}
+                        >
+                          <a>
+                            <motion.div
+                              key={post.filePath}
+                              // @ts-ignore
+                              whileHover={{ scale: 1.05, transition: 300 }}
+                              className="bg-card shadow-md rounded p-5 flex flex-col"
+                            >
+                              <h1 className=" hover:text-accent text-2xl font-medium mb-3">
+                                {post.data.title}
+                              </h1>
 
-                            <p className="text-lg mb-5 flex-grow">
-                              {post.data.description}
-                            </p>
-                            <ul>
-                              <li>
-                                {post.data.categories.map((category, i) => {
-                                  return (
-                                    <span
-                                      key={i}
-                                      className="text-sm rounded-full bg-accent px-3 py-1 mr-2 my-10"
-                                    >
-                                      {category}
-                                    </span>
-                                  );
-                                })}
-                              </li>
-                            </ul>
-                          </motion.div>
-                        </a>
-                      </Link>
-                    </li>
-                  ))}
+                              <p className="text-lg mb-5 flex-grow">
+                                {post.data.description}
+                              </p>
+                              <ul>
+                                <li>
+                                  {post.data.categories.map((category, i) => {
+                                    return (
+                                      <span
+                                        key={i}
+                                        className="text-sm rounded-full bg-accent px-3 py-1 mr-2 my-10"
+                                      >
+                                        {category}
+                                      </span>
+                                    );
+                                  })}
+                                </li>
+                              </ul>
+                            </motion.div>
+                          </a>
+                        </Link>
+                      </li>
+                    ))}
             </ul>
           </div>
         </div>
