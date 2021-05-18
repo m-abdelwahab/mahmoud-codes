@@ -18,7 +18,7 @@ const FavoriteGames = ({ pages }) => {
           description: `Some of the games I played and loved`,
           images: [
             {
-              url: `https://mahmoudabdelwahab.com/images/`,
+              url: `https://mahmoudabdelwahab.com/images/favorite-games.png`,
               width: 800,
               height: 600,
               alt: "favorite games",
