@@ -50,7 +50,7 @@ export default function PostPage({ source, frontMatter, readingTime }) {
       />
       <div className="mx-auto container px-2 md:px-16">
         <div className="flex justify-center pb-12">
-          <div>
+          <div className="overflow-x-scroll">
             <div className="px-8 md:px-10 py-20 prose sm:prose lg:prose-lg">
               <h1>{frontMatter.title}</h1>
               <div className="-mt-8 flex space-x-5">
