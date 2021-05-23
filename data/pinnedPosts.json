@@ -1,5 +1,11 @@
 [
   {
+    "title": "6 Months as a Developer Advocate",
+    "description": "Reflections about my journey as a developer advocate for the last 6 months",
+    "link": "https://mahmoud.codes/blog/6-months-as-a-developer-advocate/",
+    "categories": ["DevRel"]
+  },
+  {
     "title": "How I failed the 100 days of code challenge",
     "description": "How I Failed The 100 Days Of Code Challenge",
     "link": "https://mahmoud.codes/blog/failing-100-days-of-code/",
@@ -10,11 +16,5 @@
     "description": "End-to-End Type Safety and the benefits it offers",
     "link": "https://mahmoud.codes/blog/intro-to-end-to-end-type-safety/",
     "categories": ["GraphQL", "TypeScript"]
-  },
-  {
-    "title": "Composition Over Inheritance",
-    "description": "A comparison between Object-oriented and function programming",
-    "link": "https://mahmoud.codes/blog/composition-over-inheritance/",
-    "categories": ["Programming"]
   }
 ]
