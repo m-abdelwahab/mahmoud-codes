@@ -22,7 +22,7 @@ export const Highlight = ({
       // @ts-ignore
       style={{ zIndex: "-5" }}
       ref={ref}
-      className="inline"
+      className="inline text-primary"
     >
       <RoughNotation
         // @ts-ignore

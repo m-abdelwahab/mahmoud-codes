@@ -1,7 +1,7 @@
 import React from "react";
 import { FormattedIcon } from "../Icons/FormattedIcon";
 
-export const Callout = ({ variant = "info", children }) => {
+export const Callout = ({ variant = "info", content }) => {
   return (
     <aside
       className={`relative px-8 py-6 rounded text-lg border-l-2 border-solid ${variant} text-primary`}
@@ -12,7 +12,7 @@ export const Callout = ({ variant = "info", children }) => {
       >
         <FormattedIcon name={variant} />
       </div>
-      {children}
+      {content}
     </aside>
   );
 };
