@@ -12,7 +12,7 @@ export const CodeBlock = ({ children, className }) => {
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre
-          className={`${className} text-sm md:text-md overflow-x-scroll shadow rounded p-5 my-4`}
+          className={`${className} text-sm md:text-md overflow-auto shadow rounded p-5 my-4`}
           style={{
             ...style,
           }}
