@@ -62,10 +62,10 @@ export const MobileNav = () => {
   };
   return (
     <header
-      className="relative bg-primary sm:hidden pt-24 px-12 text-xl"
+      className="relative sm:hidden pt-16 px-12 text-xl"
       aria-hidden={!navShow}
     >
-      <div className="absolute left-0 top-0 ml-10 mt-12">
+      <div className="absolute left-0 top-0 ml-10">
         <Link href="/">
           <a>
             <FormattedIcon name="Logo" />
@@ -74,7 +74,7 @@ export const MobileNav = () => {
       </div>
       <button
         type="button"
-        className="md:hidden fixed right-0 top-0 px-5 py-12 z-50 focus:outline-none"
+        className="md:hidden fixed right-0 top-0 px-5 py-20 z-50 focus:outline-none"
         // @ts-ignore
         onClick={() => setNavShow(!navShow)}
       >
@@ -104,7 +104,7 @@ export const MobileNav = () => {
           variants={sidebar}
           transition={{ duration: 0.2 }}
           aria-label="Menu Button"
-          className="-ml-8 -mt-44 w-full h-screen bg-primary fixed cursor-auto"
+          className="-ml-8 -mt-36 w-full h-screen bg-primary fixed cursor-auto"
           onClick={() => {
             // @ts-ignore
             setNavShow(!navShow);
