@@ -1,9 +1,23 @@
 [
   {
+    "title": "How to get Started in Developer Relations",
+    "description": "A discussion on creating content and getting started in Developer Relations",
+    "topic": "Developer Relations",
+    "link": "https://www.twitch.tv/videos/1038086296",
+    "event": "Livestream - May 2021"
+  },
+  {
+    "title": "The Beginner's Guide to GraphQL",
+    "description": "An introduction to what GraphQL is and why it's awesome",
+    "topic": "GraphQL",
+    "link": "https://www.youtube.com/watch?v=7Hs2D8V0uvk",
+    "event": "Connect Dev Africa Meetup - May 2021"
+  },
+  {
     "title": "How Developer Communities improve Developer Experience",
     "description": "A discussion on how developer communities help in improving the developer experience when working with a tool.",
     "topic": "Developer Communities",
-    "link": "https://www.youtube.com/watch?v=5UZBhWAlyTo&t=128s&ab_channel=ColbyFayock",
+    "link": "https://racket.com/rosiesherry/rRYf7",
     "event": "Podcast - May 2021"
   },
   {
