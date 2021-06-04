@@ -1,5 +1,12 @@
 [
   {
+    "title": "What's new in Prisma - 2.24",
+    "description": "Livestream where we showcased the new features in the 2.24 release- First time as a host :D",
+    "topic": "Prisma",
+    "link": "https://www.youtube.com/watch?v=nTI4jjsyoEg",
+    "event": "Livestream - Jun 2021"
+  },
+  {
     "title": "How to get Started in Developer Relations",
     "description": "A discussion on creating content and getting started in Developer Relations",
     "topic": "Developer Relations",
