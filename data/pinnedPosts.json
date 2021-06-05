@@ -1,15 +1,15 @@
 [
   {
+    "title": "Why I changed the way I think about progress",
+    "description": "Reflections on why the system I used to track my progress was flawed, and how I changed the way I think about progress",
+    "link": "https://mahmoud.codes/blog/why-i-changed-the-way-i-think-about-progress/",
+    "categories": ["Personal Growth"]
+  },
+  {
     "title": "6 Months as a Developer Advocate",
     "description": "Reflections about my journey as a developer advocate for the last 6 months",
     "link": "https://mahmoud.codes/blog/6-months-as-a-developer-advocate/",
     "categories": ["DevRel"]
-  },
-  {
-    "title": "How I failed the 100 days of code challenge",
-    "description": "How I Failed The 100 Days Of Code Challenge",
-    "link": "https://mahmoud.codes/blog/failing-100-days-of-code/",
-    "categories": ["reflections"]
   },
   {
     "title": "Introduction to End-to-End Type Safety",
